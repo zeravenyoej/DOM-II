@@ -21,6 +21,18 @@ window.addEventListener('load', (event) => {
     console.log('page is fully loaded');
 });
 
+//5. dblclick
+const btn = document.querySelectorAll('.btn');
+btn.forEach(item => {
+    item.addEventListener('dblclick', event => {
+        event.target.style.color = 'black';
+    })
+})
+
+
+
+
+
 
 
 
