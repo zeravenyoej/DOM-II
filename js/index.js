@@ -1,65 +1,100 @@
 // Your code goes here
 //1. mouseover
 const logo = document.querySelector('.logo-heading');
-logo.addEventListener('mouseover', event => {
-    event.target.style.color = "orange"
-});
+
+const makeOr = function (event) {
+    return event.target.style.color = "orange"
+}
+logo.addEventListener('mouseover', makeOr);
+
 
 //2. mouseenter 
+
 const headerPic = document.querySelector("header img");
-headerPic.addEventListener('mouseenter', event => {
-    event.target.style.transform = 'scale(1.1)';
-})
+const makeBig = function (event) {
+    return event.target.style.transform = 'scale(1.1)';
+};
+
+headerPic.addEventListener('mouseenter', makeBig)
 
 //3. mouseleave
-headerPic.addEventListener('mouseleave', event =>{
-    event.target.style.transform = 'scale(1)';
-})
+
+const makeSmall= function (event) {
+    return event.target.style.transform = 'scale(1)';
+};
+headerPic.addEventListener('mouseleave', makeSmall);
 
 
 //4. load
+
 window.addEventListener('load', event => {
     console.log('page is fully loaded');
 });
 
 //5. dblclick
+
 const btn = document.querySelectorAll('.btn');
+const makeBlack = function (event) {
+    return event.target.style.color = 'black';
+}
+
 btn.forEach(item => {
-    item.addEventListener('dblclick', event => {
-        event.target.style.color = 'black';
-    })
+    item.addEventListener('dblclick', makeBlack)
 });
 
 //6. click
+
 const midPhotos = document.querySelectorAll('.content-section img');
+
+const rotate = function (event) {
+    return event.target.style.transform = 'rotate(90deg)';
+}
+
 midPhotos.forEach(photo => {
-    photo.addEventListener('click', event => {
-        event.target.style.transform = 'rotate(90deg)'
-    });
+    photo.addEventListener('click', rotate);
 });
 
 
-//7. contextmenu
-midPhotos.forEach(photo => {
-    photo.addEventListener('auxclick', event => {
-        event.target.style.transform = none;
+//7.  contextmenu aka right click
+
+const midText = document.querySelectorAll('.content-section p');
+midText.forEach(text => {
+    text.addEventListener('contextmenu', event => {
+        event.preventDefault();    
     });
-});
+})
 
 
-//8.  contextmenu aka right click
-// const midText = document.querySelectorAll('.content-section p');
-// midText.forEach(text => {
-//     text.addEventListener('contextmenu', event => {
-//         event.target.style.
-//     })
-// })
+//8. select aka highlight
+const intro = document.querySelector('.intro');
+
+const input = document.createElement('input');
+input.type = 'text';
+input.value = 'hello';
+
+intro.append(input);
 
 
+const insertText = function(event) {
+    return input.value = 'hello from the fun bus';
+};
+
+input.addEventListener('select', insertText);
 
 
+//9. mouseup. (unclear how this is different than 'click')
 
+const pick = document.querySelector('.content-destination h2');
+const makePink = function (event) {
+    return event.target.style.backgroundColor = 'hotpink';
+}
 
+pick.addEventListener('mouseup', makePink);
 
+//10. auxclick (unclear how this is different than 'click')
+const footer = document.querySelector('footer p');
+const goLeft = function (event) {
+    return event.target.style.paddingRight = '500px';
+}
 
-
+footer.addEventListener('auxclick', goLeft);
