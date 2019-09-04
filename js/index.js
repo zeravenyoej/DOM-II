@@ -93,7 +93,7 @@ const makePink = function (event) {
 
 pick.addEventListener('mouseup', makePink);
 
-//10. auxclick (unclear how this is different than 'click')
+//10. auxclick 
 
 const footer = document.querySelector('footer p');
 const goLeft = function (event) {
@@ -106,8 +106,21 @@ footer.addEventListener('auxclick', goLeft);
 //************************************************************ */
 //[ ] Nest two similar events somewhere in the site and prevent the event propagation properly
 
+const boatPic = document.querySelector('.content-destination img');
+const contDest = document.querySelector('.content-destination');
 
+const stopEvent = function (event){
+    event.stopPropagation();
+    alert("event propagation halted.");
+}
 
+const alertClick = function (event){
+    alert('It propagated!');
+}
+
+contDest.addEventListener('click', alertClick);
+
+boatPic.addEventListener('click', stopEvent);
 
 
 
@@ -115,6 +128,5 @@ footer.addEventListener('auxclick', goLeft);
 //[ ] Stop the navigation from items from refreshing the page by using `preventDefault()`
 
 const links = document.querySelectorAll('nav a');
-console.log(links);
 
 links.addEventListener('click', preventDef);
