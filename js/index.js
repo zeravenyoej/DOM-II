@@ -58,10 +58,12 @@ midPhotos.forEach(photo => {
 //7.  contextmenu aka right click
 
 const midText = document.querySelectorAll('.content-section p');
+
+const preventDef = function(event) {
+    return event.preventDefault();
+}
 midText.forEach(text => {
-    text.addEventListener('contextmenu', event => {
-        event.preventDefault();    
-    });
+    text.addEventListener('contextmenu', preventDef);
 })
 
 
@@ -92,9 +94,27 @@ const makePink = function (event) {
 pick.addEventListener('mouseup', makePink);
 
 //10. auxclick (unclear how this is different than 'click')
+
 const footer = document.querySelector('footer p');
 const goLeft = function (event) {
     return event.target.style.paddingRight = '500px';
 }
 
 footer.addEventListener('auxclick', goLeft);
+
+
+//************************************************************ */
+//[ ] Nest two similar events somewhere in the site and prevent the event propagation properly
+
+
+
+
+
+
+//************************************************************ */
+//[ ] Stop the navigation from items from refreshing the page by using `preventDefault()`
+
+const links = document.querySelectorAll('nav a');
+console.log(links);
+
+links.addEventListener('click', preventDef);
