@@ -24,11 +24,6 @@ newLink.addEventListener('mouseleave', function(){
 
 //4. contextmenu (right click)
 const textPar = document.querySelectorAll('.text-content p');
-// for(let i =0;i<textPar.length; i++){
-//     textPar[i].addEventListener('contextmenu', function(){
-//         this.style.textDecoration='underline';
-//     })
-// };
 textPar.forEach(item => 
     item.addEventListener('contextmenu', function(){
         this.style.textDecoration='underline';
