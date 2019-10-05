@@ -24,11 +24,15 @@ newLink.addEventListener('mouseleave', function(){
 
 //4. contextmenu (right click)
 const textPar = document.querySelectorAll('.text-content p');
-for(let i =0;i<textPar.length; i++){
-    textPar[i].addEventListener('contextmenu', function(){
+// for(let i =0;i<textPar.length; i++){
+//     textPar[i].addEventListener('contextmenu', function(){
+//         this.style.textDecoration='underline';
+//     })
+// };
+textPar.forEach(item => 
+    item.addEventListener('contextmenu', function(){
         this.style.textDecoration='underline';
-    })
-};
+    }));
 
 //5. keydown
 const body = document.querySelector('body');
@@ -62,6 +66,7 @@ for(let i = 0; i<parag.length; i++){
 for(let i = 0; i<parag.length; i++){
     parag[i].addEventListener('mousedown', function(){
         this.style.fontStyle = "normal";
+        this.stopPropagation();
     })
 };
 
@@ -70,5 +75,14 @@ const destination = document.querySelectorAll('.destination');
 for(let i =0; i<destination.length; i++){
     destination[i].addEventListener('mouseup', function(){
         this.style.backgroundColor='yellow';
+        this.stopPropagation();
+    });
+};
+
+// Stop the navigation from items from refreshing the page by using `preventDefault()`
+const navLinks = document.querySelectorAll('.nav-link');
+for (let i=0;i<navLinks.length; i++){
+    navLinks[i].addEventListener('click', function(){
+        this.preventDefault();
     });
 };
