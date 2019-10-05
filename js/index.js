@@ -67,17 +67,23 @@ for(let i = 0; i<parag.length; i++){
 
 //10. mouseup 
 const destination = document.querySelectorAll('.destination');
-for(let i =0; i<destination.length; i++){
-    destination[i].addEventListener('mouseup', function(){
+// for(let i =0; i<destination.length; i++){
+//     destination[i].addEventListener('mouseup', function(event){
+//         event.target.style.backgroundColor='yellow';
+//         event.stopPropagation();
+//     });
+// };
+
+destination.forEach(item=>
+    item.addEventListener('mouseup', function(){
         this.style.backgroundColor='yellow';
         this.stopPropagation();
-    });
-};
+    }));
 
 // Stop the navigation from items from refreshing the page by using `preventDefault()`
 const navLinks = document.querySelectorAll('.nav-link');
 for (let i=0;i<navLinks.length; i++){
-    navLinks[i].addEventListener('click', function(){
-        this.preventDefault();
+    navLinks[i].addEventListener('click', function(event){
+        event.preventDefault();
     });
 };
